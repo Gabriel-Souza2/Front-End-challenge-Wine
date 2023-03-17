@@ -44,4 +44,8 @@ export const Reset = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+
+    html {
+        font-size: 62.5% !important;
+    }
 `;
