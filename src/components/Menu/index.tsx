@@ -1,6 +1,14 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-import { Container, Content, Nav, Actions, ActionButton } from "./styles";
+import {
+  Container,
+  Content,
+  Nav,
+  Actions,
+  ActionButton,
+  MenuItem,
+} from "./styles";
 
 import Busca from "../../assets/Busca.svg";
 import Conta from "../../assets/conta.svg";
@@ -12,6 +20,7 @@ interface MenuLink {
 }
 
 export function Menu() {
+  const router = useRouter();
   const menuItens: MenuLink[] = [
     {
       link: "/clube",
@@ -27,7 +36,7 @@ export function Menu() {
     },
     {
       link: "/ofertas",
-      name: "OFertas",
+      name: "Ofertas",
     },
     {
       link: "/eventos",
@@ -38,29 +47,29 @@ export function Menu() {
     <Container>
       <Content>
         <img src="/black.svg" />
+        <Nav>
+          <ul>
+            {menuItens.map((item) => {
+              return (
+                <MenuItem key={item.name} active={item.link === router.route}>
+                  <Link href={item.link}>{item.name}</Link>
+                </MenuItem>
+              );
+            })}
+          </ul>
+        </Nav>
+        <Actions>
+          <ActionButton>
+            <Busca />
+          </ActionButton>
+          <ActionButton>
+            <Conta />
+          </ActionButton>
+          <ActionButton>
+            <Group />
+          </ActionButton>
+        </Actions>
       </Content>
-      <Nav>
-        <ul>
-          {menuItens.map((item) => {
-            return (
-              <Link href={item.link} key={item.name}>
-                item.name
-              </Link>
-            );
-          })}
-        </ul>
-      </Nav>
-      <Actions>
-        <ActionButton>
-          <Busca />
-        </ActionButton>
-        <ActionButton>
-          <Conta />
-        </ActionButton>
-        <ActionButton>
-          <Group />
-        </ActionButton>
-      </Actions>
     </Container>
   );
 }
