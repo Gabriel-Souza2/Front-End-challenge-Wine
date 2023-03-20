@@ -139,6 +139,7 @@ export const MenuItem = styled.li<ActiveLink>`
   display: flex;
   align-items: center;
   position: relative;
+  font-family: "Neo Sans Std", sans-serif;
 
   a {
     text-decoration: none;

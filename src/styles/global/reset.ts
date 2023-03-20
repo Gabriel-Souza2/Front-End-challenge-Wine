@@ -47,5 +47,6 @@ export const Reset = createGlobalStyle`
 
     html {
         font-size: 62.5% !important;
+        font-family: "Lato", sans-serif;
     }
 `;
