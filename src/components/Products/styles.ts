@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
   .total-products {
     font-size: 1.8rem;
     color: ${({ theme }) => theme.colors["gray-700"]};
@@ -12,6 +13,34 @@ export const Container = styled.div`
 `;
 
 export const ProductsList = styled.ul`
+  width: 100%;
   display: flex;
-  width: 25.6rem;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 3.2rem;
+
+  li {
+    width: 25.6rem;
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.large}) {
+    li {
+      width: 23rem;
+    }
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    li {
+      width: 19rem;
+    }
+  }
+  @media screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.extraSmall}) {
+    li {
+      width: 15.6rem;
+    }
+  }
 `;

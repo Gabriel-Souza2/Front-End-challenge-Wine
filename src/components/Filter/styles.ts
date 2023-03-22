@@ -47,6 +47,12 @@ export const Container = styled.aside`
     margin-bottom: 1.8rem;
     cursor: pointer;
   }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    & {
+      display: none;
+    }
+  }
 `;
 
 export const CustomRadio = styled.div`

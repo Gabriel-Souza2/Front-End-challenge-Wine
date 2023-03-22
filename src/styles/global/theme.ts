@@ -21,6 +21,7 @@ export const defaultTheme = {
   },
 
   breakpoints: {
+    extraSmall: "375px",
     small: "576px",
     medium: "768px",
     large: "1024px",

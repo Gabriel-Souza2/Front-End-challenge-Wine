@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
+
   .product-wrapper {
     background-color: ${({ theme }) => theme.colors["white"]};
     padding: 1rem;
@@ -81,6 +83,12 @@ export const Container = styled.div`
     font-size: 1.2rem;
     color: ${({ theme }) => theme.colors["gray-300"]};
     margin-top: 0.6rem;
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    .product-wrapper p {
+      font-size: 1.4rem;
+    }
   }
 `;
 
