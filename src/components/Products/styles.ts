@@ -34,11 +34,12 @@ export const ProductsList = styled.ul`
     }
   }
 
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.medium}) {
     li {
-      width: 19rem;
+      width: 18rem;
     }
   }
+
   @media screen and (max-width: ${({ theme }) =>
       theme.breakpoints.extraSmall}) {
     li {
