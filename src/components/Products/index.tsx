@@ -1,3 +1,4 @@
+import { Pagination } from "../Pagination";
 import { Product } from "../Product";
 import { Container, ProductsList } from "./styles";
 
@@ -24,6 +25,7 @@ export function Products() {
           );
         })}
       </ProductsList>
+      <Pagination />
     </Container>
   );
 }

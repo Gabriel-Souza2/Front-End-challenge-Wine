@@ -22,6 +22,8 @@ export const ProductsList = styled.ul`
   justify-content: space-between;
   row-gap: 3.2rem;
 
+  margin-bottom: 3rem;
+
   li {
     width: 25.6rem;
   }
