@@ -10,7 +10,7 @@ export const Container = styled.aside`
     margin-bottom: 3.2rem;
   }
 
-  .byPrice {
+  .by-price {
     font-size: 1.8rem;
     font-weight: bold;
     color: ${({ theme }) => theme.colors["gray-600"]};

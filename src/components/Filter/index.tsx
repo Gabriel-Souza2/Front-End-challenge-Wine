@@ -4,7 +4,7 @@ export function Filter() {
   return (
     <Container>
       <h4>Refine sua busca</h4>
-      <span className="byPrice">Por Preço</span>
+      <span className="by-price">Por Preço</span>
       <label>
         <input type="radio" id="p_40" name="by_price" value="p_40" />
         <CustomRadio>
