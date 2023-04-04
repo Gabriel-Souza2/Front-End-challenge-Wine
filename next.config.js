@@ -14,6 +14,20 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/vinhos",
+        permanent: true,
+      },
+      {
+        source: "/vinhos/1",
+        destination: "/vinhos",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

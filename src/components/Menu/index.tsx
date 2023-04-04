@@ -39,7 +39,7 @@ export function Menu() {
       name: "Clube",
     },
     {
-      link: "/",
+      link: "/vinhos",
       name: "Loja",
     },
     {
@@ -87,8 +87,10 @@ export function Menu() {
             </AccountAccess>
             <ul>
               {menuItens.map((item) => {
+                const activeLink = router.route.search(item.link) >= 0;
+
                 return (
-                  <MenuItem key={item.name} active={item.link === router.route}>
+                  <MenuItem key={item.name} active={activeLink}>
                     <Link href={item.link}>{item.name}</Link>
                   </MenuItem>
                 );

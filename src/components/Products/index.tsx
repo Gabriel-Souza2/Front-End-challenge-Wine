@@ -1,15 +1,13 @@
+import { IProduct } from "@/dao/product";
 import { Pagination } from "../Pagination";
 import { Product } from "../Product";
 import { Container, ProductsList } from "./styles";
 
-export function Products() {
-  const data = {
-    title: "Bacalhôa Meia Pipa Private Selection Castelão Syrah 2014",
-    price: "30,00",
-    oldPrice: "37,40",
-    notPartnerPrice: "37,40",
-    discount: "60",
-  };
+interface Props {
+  data: IProduct[];
+}
+
+export function Products({ data }: Props) {
   return (
     <Container>
       <p className="total-products">
@@ -17,10 +15,10 @@ export function Products() {
       </p>
 
       <ProductsList>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((number) => {
+        {data.map((product) => {
           return (
-            <li key={number}>
-              <Product data={data} />
+            <li key={product.id}>
+              <Product data={product} />
             </li>
           );
         })}
