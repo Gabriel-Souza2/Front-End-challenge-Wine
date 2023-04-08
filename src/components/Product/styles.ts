@@ -11,7 +11,14 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     margin-bottom: 1.6rem;
+  }
 
+  .title {
+    height: 4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
     p {
       text-align: center;
       margin-top: 0.8rem;

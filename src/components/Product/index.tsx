@@ -11,7 +11,9 @@ export function Product({ data }: Props) {
     <Container>
       <div className="product-wrapper">
         <img src={data.image} alt="vinho" />
-        <p>{data.name}</p>
+        <div className="title">
+          <p>{data.name}</p>
+        </div>
         <div className="discount">
           <span className="old-price">R$ {data.price}</span>
           <span className="total-discount">{60}% OFF</span>
