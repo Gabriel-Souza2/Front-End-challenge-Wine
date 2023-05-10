@@ -93,8 +93,23 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
-    .product-wrapper p {
+    .title {
+      height: 4rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
       font-size: 1.4rem;
+    }
+
+    .price-wrapper {
+      .partner {
+        display: block;
+        margin: 0 0 0.6rem;
+      }
+      .price .integer {
+        font-size: 2rem;
+      }
     }
   }
 `;

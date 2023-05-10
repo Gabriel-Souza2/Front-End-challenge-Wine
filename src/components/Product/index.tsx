@@ -22,7 +22,8 @@ export function Product({ data }: Props) {
           <span className="partner">Sócio wine</span>
           <span className="price">
             <span className="symbol">R$</span>
-            <span className="integer">{priceInteger}</span>,{priceDecimal}
+            <span className="integer">{priceInteger}</span>
+            {priceDecimal}
           </span>
         </div>
         <span className="not-partner">Não sócio R$ {data.priceNonMember}</span>

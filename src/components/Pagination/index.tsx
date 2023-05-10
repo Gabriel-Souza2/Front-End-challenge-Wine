@@ -1,13 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {
-  Container,
-  Wrapper,
-  PaginationText,
-  PaginationNumber,
-  ShowMore,
-  TotalProductsMobile,
-} from "./styles";
+import { Container, Wrapper, PaginationText, PaginationNumber } from "./styles";
 
 interface Props {
   productsTotal: number;
@@ -65,11 +58,6 @@ export function Pagination({ productsTotal }: Props) {
           próximo {">>"}
         </PaginationText>
       </Wrapper>
-      <ShowMore>Mostrar Mais</ShowMore>
-      <TotalProductsMobile>
-        Exibindo <span>8</span> de <span>{productsTotal}</span> produtos no
-        total
-      </TotalProductsMobile>
     </Container>
   );
 }
