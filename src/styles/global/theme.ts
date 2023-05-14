@@ -14,6 +14,7 @@ export const defaultTheme = {
     "green-500": "#7EBC43",
     "purple-500": "#B6116E",
     white: "#FFFFFF",
+    "half-white": "rgba(255,255,255,0.2)",
   },
   fonts: {
     main: "Lato",

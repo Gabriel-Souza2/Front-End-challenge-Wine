@@ -5,7 +5,6 @@ import { Products } from "../Products";
 
 import { Container, Wrapper } from "./styles";
 import { Pagination } from "../Pagination";
-import { useRouter } from "next/router";
 
 interface Props {
   products: IProduct[];

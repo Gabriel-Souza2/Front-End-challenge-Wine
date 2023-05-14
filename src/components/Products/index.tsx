@@ -1,5 +1,5 @@
 import { IProduct } from "@/dao/product";
-import { Product } from "../Product";
+import { Product } from "../ProductContainer";
 import { Container, ProductsList } from "./styles";
 
 interface Props {
