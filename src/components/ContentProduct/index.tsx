@@ -16,12 +16,28 @@ import { IProduct } from "@/dao/product";
 
 import Left from "../../assets/left.svg";
 import Right from "../../assets/right.svg";
+import { useState } from "react";
 
 interface Props {
   data: IProduct;
 }
 
 export function ContentProduct({ data }: Props) {
+  const [amountItems, setAmountItens] = useState(1);
+
+  function handleAddMoreItems() {
+    setAmountItens((state) => {
+      return state + 1;
+    });
+  }
+
+  function handleSubMoreItems() {
+    setAmountItens((state) => {
+      return state - 1;
+    });
+  }
+
+  const activeButtonSubItems = amountItems > 1;
   return (
     <Container>
       <Wrapper>
@@ -62,12 +78,17 @@ export function ContentProduct({ data }: Props) {
 
             <Buy>
               <div>
-                <ActionsQtd active={false} disabled={false}>
-                  {" "}
-                  -{" "}
+                <ActionsQtd
+                  active={activeButtonSubItems}
+                  disabled={!activeButtonSubItems}
+                  onClick={handleSubMoreItems}
+                >
+                  -
                 </ActionsQtd>
-                <span className="Qtd">1</span>
-                <ActionsQtd active={true}>+</ActionsQtd>
+                <span className="Qtd">{amountItems}</span>
+                <ActionsQtd active={true} onClick={handleAddMoreItems}>
+                  +
+                </ActionsQtd>
               </div>
               <span className="diviser"></span>
               <button className="addCart">Adicionar</button>
