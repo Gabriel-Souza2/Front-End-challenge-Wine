@@ -106,6 +106,7 @@ export function Menu() {
             </ActionButton>
             <ActionButton>
               <Group />
+              <span className="qtdCart">0</span>
             </ActionButton>
           </Actions>
         </Content>

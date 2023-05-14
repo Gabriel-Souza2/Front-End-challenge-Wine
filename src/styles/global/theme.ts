@@ -13,6 +13,7 @@ export const defaultTheme = {
     "orange-500": "#F79552",
     "green-500": "#7EBC43",
     "purple-500": "#B6116E",
+    "blue-500": "#4FBFA5",
     white: "#FFFFFF",
     "half-white": "rgba(255,255,255,0.2)",
   },

@@ -194,6 +194,7 @@ export const Actions = styled.div`
 `;
 
 export const ActionButton = styled.button`
+  position: relative;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -205,6 +206,28 @@ export const ActionButton = styled.button`
 
   &:hover {
     background: ${({ theme }) => theme.colors["gray-100"]};
+  }
+
+  .qtdCart {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+
+    background-color: ${({ theme }) => theme.colors["white"]};
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 1px 2px ${({ theme }) => theme.colors["gray-700"]};
+
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    color: ${({ theme }) => theme.colors["blue-500"]};
   }
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.medium}) {
