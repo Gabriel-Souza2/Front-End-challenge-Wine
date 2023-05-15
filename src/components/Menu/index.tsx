@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import * as Dialog from "@radix-ui/react-dialog";
 
 import {
   Container,
@@ -22,6 +23,7 @@ import Arrow from "../../assets/arrow-right-pink.svg";
 import Close from "../../assets/icon_close.svg";
 
 import { useState } from "react";
+import { Cart } from "@/components/Cart";
 
 interface MenuLink {
   link: string;
@@ -104,10 +106,16 @@ export function Menu() {
             <ActionButton>
               <Conta />
             </ActionButton>
-            <ActionButton>
-              <Group />
-              <span className="qtdCart">0</span>
-            </ActionButton>
+
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <ActionButton>
+                  <Group />
+                  <span className="qtdCart">0</span>
+                </ActionButton>
+              </Dialog.Trigger>
+              <Cart />
+            </Dialog.Root>
           </Actions>
         </Content>
       </Container>

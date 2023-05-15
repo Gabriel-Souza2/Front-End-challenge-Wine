@@ -12,6 +12,8 @@ import {
   ActionsQtd,
 } from "./styles";
 
+import { useRouter } from "next/router";
+
 import { IProduct } from "@/dao/product";
 
 import Left from "../../assets/left.svg";
@@ -24,6 +26,7 @@ interface Props {
 
 export function ContentProduct({ data }: Props) {
   const [amountItems, setAmountItens] = useState(1);
+  const router = useRouter();
 
   function handleAddMoreItems() {
     setAmountItens((state) => {
@@ -37,13 +40,19 @@ export function ContentProduct({ data }: Props) {
     });
   }
 
+  function handlePreviusPage() {
+    router.back();
+  }
+
   const activeButtonSubItems = amountItems > 1;
   return (
     <Container>
       <Wrapper>
         <Header>
-          <Left />
-          <span>Voltar</span>
+          <button onClick={handlePreviusPage}>
+            <Left />
+            <span>Voltar</span>
+          </button>
         </Header>
         <Content>
           <div className="img">

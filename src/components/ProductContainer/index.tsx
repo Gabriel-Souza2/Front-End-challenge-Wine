@@ -9,7 +9,7 @@ export function Product({ data }: Props) {
   const [priceInteger, priceDecimal] = data.priceMember.split(",");
   return (
     <Container>
-      <div className="product-wrapper">
+      <a href={`/product/${data.id}`} className="product-wrapper">
         <img src={data.image} alt="vinho" />
         <div className="title">
           <p>{data.name}</p>
@@ -27,7 +27,7 @@ export function Product({ data }: Props) {
           </span>
         </div>
         <span className="not-partner">Não sócio R$ {data.priceNonMember}</span>
-      </div>
+      </a>
       <AddButton>Adicionar</AddButton>
     </Container>
   );

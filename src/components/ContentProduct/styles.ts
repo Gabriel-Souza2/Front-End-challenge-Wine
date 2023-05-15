@@ -17,8 +17,16 @@ export const Wrapper = styled.div`
 export const Header = styled.div`
   display: flex;
   align-items: center;
-  font-size: 2rem;
   gap: 2rem;
+
+  button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+  }
 `;
 
 export const Content = styled.div`

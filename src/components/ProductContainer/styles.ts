@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
 
+  a {
+    text-decoration: none;
+  }
+
   .product-wrapper {
     background-color: ${({ theme }) => theme.colors["white"]};
     padding: 1rem;
@@ -65,8 +69,10 @@ export const Container = styled.div`
 
     .partner {
       font-size: 1.1rem;
-      font-weight: bold;
+      font-weight: 700;
       margin-right: 0.8rem;
+      color: ${({ theme }) => theme.colors["gray-800"]};
+      text-transform: uppercase;
     }
 
     .price {
