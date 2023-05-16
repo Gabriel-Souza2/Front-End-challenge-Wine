@@ -1,35 +1,51 @@
+import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { Container, Quantity } from "./styles";
 
 interface Props {
+  id: string;
+  img: string;
   title: string;
-  price: number;
+  price: string;
   quantity?: number;
 }
 
-export function CartItem({ title, price, quantity = 1 }: Props) {
+export function CartItem({ id, img, title, price, quantity = 1 }: Props) {
   const [quantityItem, setQuantityItem] = useState(quantity);
-  const [priceInteger, priceDecimal] = String(price).split(".");
+  const [priceTotal, setPriceTotal] = useState(
+    (Number(price) * quantity).toFixed(2)
+  );
+  const [priceInteger, priceDecimal] = String(priceTotal).split(".");
+
+  const cartContext = useCart();
+
+  function changePriceTotal(quantity: number) {
+    setPriceTotal((Number(price) * quantity).toFixed(2));
+  }
 
   function handleSubItems() {
     if (quantityItem === 1) return;
     setQuantityItem((state) => {
+      changePriceTotal(state - 1);
+
+      cartContext.UpdateQuantityProduct(id, state - 1);
+
       return state - 1;
     });
   }
 
   function handleAddItems() {
     setQuantityItem((state) => {
+      changePriceTotal(state + 1);
+      cartContext.UpdateQuantityProduct(id, state + 1);
+
       return state + 1;
     });
   }
 
   return (
     <Container>
-      <img
-        src="https://www.wine.com.br/cdn-cgi/image/q=99,f=png,h=110/assets-images/produtos/RGQ315-01.png"
-        alt=""
-      />
+      <img src={img} alt="" className="img" />
       <div className="info">
         <h3 className="name">{title}</h3>
         <div className="footer">

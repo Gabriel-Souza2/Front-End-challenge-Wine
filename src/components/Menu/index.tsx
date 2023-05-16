@@ -24,6 +24,7 @@ import Close from "../../assets/icon_close.svg";
 
 import { useState } from "react";
 import { Cart } from "@/components/Cart";
+import { useCart } from "@/context/CartContext";
 
 interface MenuLink {
   link: string;
@@ -32,6 +33,10 @@ interface MenuLink {
 
 export function Menu() {
   const router = useRouter();
+
+  const cartContext = useCart();
+
+  const quantityItem = cartContext.cartQuantity;
 
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
 
@@ -111,7 +116,7 @@ export function Menu() {
               <Dialog.Trigger asChild>
                 <ActionButton>
                   <Group />
-                  <span className="qtdCart">0</span>
+                  <span className="qtdCart">{quantityItem}</span>
                 </ActionButton>
               </Dialog.Trigger>
               <Cart />

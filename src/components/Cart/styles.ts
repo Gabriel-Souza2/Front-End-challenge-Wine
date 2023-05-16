@@ -30,6 +30,13 @@ export const Content = styled(Dialog.Content)`
   height: 100%;
 `;
 
+export const Message = styled.div`
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors["gray-900"]};
+  font-weight: 700;
+  text-align: center;
+`;
+
 export const Title = styled(Dialog.Title)`
   font-size: 2rem;
   color: ${({ theme }) => theme.colors["gray-900"]};
@@ -41,6 +48,7 @@ export const Products = styled.div`
   overflow-y: auto;
 
   li {
+    width: 100%;
     border-bottom: 1px solid ${({ theme }) => theme.colors["gray-200"]};
   }
 `;

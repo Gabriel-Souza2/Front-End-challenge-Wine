@@ -1,5 +1,6 @@
 import { Container, AddButton } from "./styles";
 import { IProduct } from "@/dao/product";
+import { useCart } from "@/context/CartContext";
 
 interface Props {
   data: IProduct;
@@ -7,6 +8,23 @@ interface Props {
 
 export function Product({ data }: Props) {
   const [priceInteger, priceDecimal] = data.priceMember.split(",");
+  const cartContext = useCart();
+
+  function handleAddToCart() {
+    if (cartContext.checkIfAlreadyExists(data.id)) {
+      const item = cartContext.getCartById(data.id);
+      cartContext.UpdateQuantityProduct(data.id, item.quantity + 1);
+    } else {
+      cartContext.addToCart({
+        id: data.id,
+        image: data.image,
+        name: data.name,
+        quantity: 1,
+        price: data.price,
+      });
+    }
+  }
+
   return (
     <Container>
       <a href={`/product/${data.id}`} className="product-wrapper">
@@ -28,7 +46,7 @@ export function Product({ data }: Props) {
         </div>
         <span className="not-partner">Não sócio R$ {data.priceNonMember}</span>
       </a>
-      <AddButton>Adicionar</AddButton>
+      <AddButton onClick={handleAddToCart}>Adicionar</AddButton>
     </Container>
   );
 }

@@ -5,10 +5,16 @@ export const Container = styled.div`
   padding: 1.6rem;
   gap: 1rem;
 
+  .img {
+    height: 110px;
+    width: 72px;
+  }
+
   .info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 80%;
 
     .name {
       font-size: 1.4rem;
