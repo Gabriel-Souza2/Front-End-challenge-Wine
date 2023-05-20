@@ -1,12 +1,14 @@
 import { Container, AddButton } from "./styles";
 import { IProduct } from "@/dao/product";
 import { useCart } from "@/context/CartContext";
+import { useState } from "react";
 
 interface Props {
   data: IProduct;
 }
 
 export function ProductContainer({ data }: Props) {
+  const [addedToCart, setAddedToCart] = useState(false);
   const [priceInteger, priceDecimal] = data.priceMember.split(",");
   const cartContext = useCart();
 
@@ -23,6 +25,12 @@ export function ProductContainer({ data }: Props) {
         price: data.price,
       });
     }
+
+    setAddedToCart(true);
+
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 2000);
   }
 
   return (
@@ -46,7 +54,9 @@ export function ProductContainer({ data }: Props) {
         </div>
         <span className="not-partner">Não sócio R$ {data.priceNonMember}</span>
       </a>
-      <AddButton onClick={handleAddToCart}>Adicionar</AddButton>
+      <AddButton onClick={handleAddToCart}>
+        {addedToCart ? <div className="loader"></div> : "Adicionar"}
+      </AddButton>
     </Container>
   );
 }
