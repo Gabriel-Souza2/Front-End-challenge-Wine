@@ -1,4 +1,13 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { CART } from "@/util/card";
+import { saveStorage, getStorage } from "@/util/storage";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 interface CartItem {
   id: string;
@@ -31,6 +40,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalCart, setTotalCart] = useState(0);
 
+  const init = useRef(true);
   const cartQuantity = cartItems.length;
 
   const totalPrice = cartItems.reduce((total, product) => {
@@ -86,6 +96,15 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   const checkIfAlreadyExists = (productId: string) =>
     cartItems.some((product) => product.id === productId);
+
+  useEffect(() => {
+    if (cartItems.length === 0 && init.current) {
+      setCartItems(getStorage(CART));
+      init.current = false;
+      return;
+    }
+    saveStorage(CART, cartItems);
+  }, [cartItems, init]);
 
   return (
     <CartContext.Provider

@@ -24,7 +24,17 @@ export function CartItem({ id, img, title, price, quantity = 1 }: Props) {
   }
 
   function handleSubItems() {
-    if (quantityItem === 1) return;
+    if (quantityItem <= 1) {
+      cartContext.removeFromCart({
+        id: id,
+        quantity: quantity,
+        price: price,
+        name: title,
+        image: img,
+      });
+
+      return;
+    }
     setQuantityItem((state) => {
       changePriceTotal(state - 1);
 

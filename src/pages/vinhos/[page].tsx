@@ -20,8 +20,8 @@ export const getStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps(context: GetStaticProps) {
-  const { page } = context.params;
+export async function getStaticProps({ params }: { params: { page: string } }) {
+  const page = params.page;
   const res = await axios.get(`https://apiwine.onrender.com/products`, {
     params: {
       page: page,

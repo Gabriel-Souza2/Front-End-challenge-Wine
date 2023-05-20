@@ -14,7 +14,6 @@ import {
 } from "./styles";
 
 import ArrowLeft from "../../assets/icon_arrow_left.svg";
-import { useState } from "react";
 
 export function Cart() {
   const cartContext = useCart();

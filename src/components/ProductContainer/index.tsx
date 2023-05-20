@@ -6,7 +6,7 @@ interface Props {
   data: IProduct;
 }
 
-export function Product({ data }: Props) {
+export function ProductContainer({ data }: Props) {
   const [priceInteger, priceDecimal] = data.priceMember.split(",");
   const cartContext = useCart();
 

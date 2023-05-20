@@ -1,5 +1,5 @@
 import { IProduct } from "@/dao/product";
-import { Product } from "../ProductContainer";
+import { ProductContainer } from "../ProductContainer";
 import { Container, ProductsList } from "./styles";
 
 interface Props {
@@ -17,7 +17,7 @@ export function Products({ data }: Props) {
         {data.map((product) => {
           return (
             <li key={product.id}>
-              <Product data={product} />
+              <ProductContainer data={product} />
             </li>
           );
         })}

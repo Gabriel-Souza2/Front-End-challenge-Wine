@@ -1,6 +1,5 @@
 import { IProduct } from "@/dao/product";
 import axios from "axios";
-import { GetStaticProps } from "next";
 
 import { ContentProduct } from "@/components/ContentProduct";
 
@@ -19,8 +18,12 @@ export const getStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps(context: GetStaticProps) {
-  const { product } = context.params;
+export async function getStaticProps({
+  params,
+}: {
+  params: { product: string };
+}) {
+  const product = params.product;
   const res = await axios.get(`https://apiwine.onrender.com/product`, {
     params: {
       id: product,
