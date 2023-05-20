@@ -140,16 +140,6 @@ export const Buy = styled.div`
     height: 3.3rem;
     background-color: ${({ theme }) => theme.colors["half-white"]};
     margin-left: 2.2rem;
-    margin-right: 4.4rem;
-  }
-
-  .addCart {
-    font-size: 1.6rem;
-    font-weight: 700;
-    background: none;
-    border: none;
-    color: ${({ theme }) => theme.colors["white"]};
-    cursor: pointer;
   }
 `;
 

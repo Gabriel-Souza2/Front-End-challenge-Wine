@@ -15,11 +15,11 @@ import {
 import { useRouter } from "next/router";
 
 import { IProduct } from "@/dao/product";
-import { useCart } from "@/context/CartContext";
 
 import Left from "../../assets/left.svg";
 import Right from "../../assets/right.svg";
 import { useState } from "react";
+import { AddButton } from "../AddButton";
 
 interface Props {
   data: IProduct;
@@ -27,8 +27,8 @@ interface Props {
 
 export function ContentProduct({ data }: Props) {
   const [amountItems, setAmountItens] = useState(1);
+
   const router = useRouter();
-  const cartContext = useCart();
 
   function handleAddMoreItems() {
     setAmountItens((state) => {
@@ -44,21 +44,6 @@ export function ContentProduct({ data }: Props) {
 
   function handlePreviusPage() {
     router.back();
-  }
-
-  function handleAddToCart() {
-    if (cartContext.checkIfAlreadyExists(data.id)) {
-      const item = cartContext.getCartById(data.id);
-      cartContext.UpdateQuantityProduct(data.id, item.quantity + amountItems);
-    } else {
-      cartContext.addToCart({
-        id: data.id,
-        image: data.image,
-        name: data.name,
-        quantity: amountItems,
-        price: data.price,
-      });
-    }
   }
 
   const activeButtonSubItems = amountItems > 1;
@@ -117,9 +102,7 @@ export function ContentProduct({ data }: Props) {
                 </ActionsQtd>
               </div>
               <span className="diviser"></span>
-              <button className="addCart" onClick={handleAddToCart}>
-                Adicionar
-              </button>
+              <AddButton data={data} quantity={amountItems} />
             </Buy>
           </div>
         </Content>

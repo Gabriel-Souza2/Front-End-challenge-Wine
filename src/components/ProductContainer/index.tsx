@@ -1,37 +1,15 @@
-import { Container, AddButton } from "./styles";
+import { Container } from "./styles";
 import { IProduct } from "@/dao/product";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
+import { AddButton } from "../AddButton";
 
 interface Props {
   data: IProduct;
 }
 
 export function ProductContainer({ data }: Props) {
-  const [addedToCart, setAddedToCart] = useState(false);
   const [priceInteger, priceDecimal] = data.priceMember.split(",");
-  const cartContext = useCart();
-
-  function handleAddToCart() {
-    if (cartContext.checkIfAlreadyExists(data.id)) {
-      const item = cartContext.getCartById(data.id);
-      cartContext.UpdateQuantityProduct(data.id, item.quantity + 1);
-    } else {
-      cartContext.addToCart({
-        id: data.id,
-        image: data.image,
-        name: data.name,
-        quantity: 1,
-        price: data.price,
-      });
-    }
-
-    setAddedToCart(true);
-
-    setTimeout(() => {
-      setAddedToCart(false);
-    }, 2000);
-  }
 
   return (
     <Container>
@@ -54,9 +32,8 @@ export function ProductContainer({ data }: Props) {
         </div>
         <span className="not-partner">Não sócio R$ {data.priceNonMember}</span>
       </a>
-      <AddButton onClick={handleAddToCart}>
-        {addedToCart ? <div className="loader"></div> : "Adicionar"}
-      </AddButton>
+
+      <AddButton data={data} quantity={1} />
     </Container>
   );
 }
