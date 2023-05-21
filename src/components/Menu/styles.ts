@@ -28,14 +28,29 @@ export const Content = styled.div`
 
   align-items: center;
 
+  .logo-mobile {
+    display: none;
+  }
+
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.large}) {
     & {
       padding: 0 1.6rem;
     }
   }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    .logo-mobile {
+      display: block;
+    }
+
+    .logo {
+      display: none;
+    }
+  }
 `;
 
 export const Nav = styled.nav<MobileMenu>`
+  z-index: 99999;
   margin-left: 8rem;
   font-size: 1.8rem;
   color: ${({ theme }) => theme.colors["gray-400"]};

@@ -26,6 +26,7 @@ import { useState } from "react";
 import { Cart } from "@/components/Cart";
 import { useCart } from "@/context/CartContext";
 
+import Logo from "../../assets/white.svg";
 interface MenuLink {
   link: string;
   name: string;
@@ -77,7 +78,11 @@ export function Menu() {
           </HambugerMenu>
           <Overlay openMobileMenu={openMobileMenu} onClick={handleToggleMenu} />
 
-          <img src="/black.svg" />
+          <img src="/black.svg" className="logo" />
+
+          <div className="logo-mobile">
+            <Logo />
+          </div>
 
           <Nav openMobileMenu={openMobileMenu}>
             <AccountAccess openMobileMenu={openMobileMenu}>

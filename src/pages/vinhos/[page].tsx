@@ -1,6 +1,5 @@
 import { IProduct } from "@/dao/product";
 import axios from "axios";
-import { GetStaticProps } from "next";
 
 import { Content } from "@/components/Content";
 

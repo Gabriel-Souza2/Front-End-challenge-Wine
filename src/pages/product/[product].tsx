@@ -2,12 +2,15 @@ import { IProduct } from "@/dao/product";
 import axios from "axios";
 
 import { ContentProduct } from "@/components/ContentProduct";
+import { useTheme } from "styled-components";
 
 interface ProductProps {
   data: IProduct;
 }
 
 export function Product({ data }: ProductProps) {
+  const theme = useTheme();
+
   return <ContentProduct data={data}></ContentProduct>;
 }
 

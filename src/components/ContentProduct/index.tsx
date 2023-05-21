@@ -3,6 +3,7 @@ import {
   Wrapper,
   Header,
   Content,
+  ContentWrapper,
   BreadCrumb,
   Title,
   Tags,
@@ -10,6 +11,7 @@ import {
   Comment,
   Buy,
   ActionsQtd,
+  PriceMobile,
 } from "./styles";
 
 import { useRouter } from "next/router";
@@ -46,6 +48,10 @@ export function ContentProduct({ data }: Props) {
     router.back();
   }
 
+  function formatMoney(value: string): string {
+    return Number(value).toLocaleString("pt-br", { minimumFractionDigits: 2 });
+  }
+
   const activeButtonSubItems = amountItems > 1;
   return (
     <Container>
@@ -57,24 +63,26 @@ export function ContentProduct({ data }: Props) {
           </button>
         </Header>
         <Content>
-          <div className="img">
-            <img src={data.image} />
-          </div>
-          <div className="info">
-            <BreadCrumb>
-              <a href="#">{data.classification}</a>
-              <Right />
-              <a href="#">{data.country}</a>
-              <Right />
-              <span>Western Cape</span>
-            </BreadCrumb>
-            <Title>{data.name}</Title>
-            <Tags>
-              <img src={data.flag} />
-              <span>{data.country}</span>
-              <span>{data.type}</span>
-              <span>{data.volume}</span>
-            </Tags>
+          <ContentWrapper>
+            <div className="img">
+              <img src={data.image} />
+            </div>
+            <div className="info">
+              <BreadCrumb>
+                <a href="#">{data.classification}</a>
+                <Right />
+                <a href="#">{data.country}</a>
+                <Right />
+                <span>Western Cape</span>
+              </BreadCrumb>
+              <Title>{data.name}</Title>
+              <Tags>
+                <img src={data.flag} />
+                <span>{data.country}</span>
+                <span>{data.type}</span>
+                <span>{data.volume}</span>
+              </Tags>
+            </div>
             <Price>
               <div className="patner">R$ {data.price}</div>
               <div className="no-patner">
@@ -104,7 +112,26 @@ export function ContentProduct({ data }: Props) {
               <span className="diviser"></span>
               <AddButton data={data} quantity={amountItems} />
             </Buy>
-          </div>
+          </ContentWrapper>
+          <PriceMobile>
+            <div className="price-wrapper">
+              <div className="discount">60% OFF</div>
+              <div className="price">
+                R$
+                {formatMoney(data.price)}
+              </div>
+              <div className="discount-price">
+                R$ {formatMoney(data.priceMember)}
+              </div>
+              <div className="not-patner">
+                Preço Não-Socio R$
+                {formatMoney(data.priceNonMember)}
+              </div>
+            </div>
+            <div className="button">
+              <AddButton data={data} quantity={1} />
+            </div>
+          </PriceMobile>
         </Content>
       </Wrapper>
     </Container>

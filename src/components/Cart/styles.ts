@@ -28,6 +28,8 @@ export const Content = styled(Dialog.Content)`
   transform: translateY(-50%);
   width: 35rem;
   height: 100%;
+
+  overflow-y: auto;
 `;
 
 export const Message = styled.div`

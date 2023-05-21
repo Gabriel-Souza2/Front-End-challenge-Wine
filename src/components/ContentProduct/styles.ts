@@ -12,6 +12,9 @@ export const Wrapper = styled.div`
   max-width: 112rem;
   margin: 0 auto;
   padding: 4rem 0;
+  display: flex;
+
+  flex-direction: column;
 `;
 
 export const Header = styled.div`
@@ -27,15 +30,79 @@ export const Header = styled.div`
     cursor: pointer;
     font-size: 2rem;
   }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    display: none;
+  }
 `;
 
 export const Content = styled.div`
+  margin: 0 auto;
   display: flex;
   justify-content: center;
-  gap: 16.2rem;
+  align-items: center;
+  width: 58rem;
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    width: auto;
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  display: grid;
+  grid-template-areas:
+    "img  head"
+    "img  price"
+    "img  comment"
+    "img  buy";
+
+  .img {
+    grid-area: img;
+    margin-right: 16.2rem;
+  }
 
   .info {
     width: 50rem;
+    grid-area: head;
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.medium}) {
+    row-gap: 6rem;
+
+    .info {
+      width: auto;
+    }
+    .img {
+      width: auto;
+      height: 33.3rem;
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    grid-template-areas:
+      "head"
+      "img"
+      "comment"
+      "buy";
+
+    .info {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .img {
+      width: auto;
+      height: 33.3rem;
+      margin-right: 0;
+      margin: 0 auto;
+
+      img {
+        height: 100%;
+      }
+    }
   }
 `;
 
@@ -63,6 +130,9 @@ export const Title = styled.h1`
   font-size: 2.8rem;
   font-weight: bold;
   margin-bottom: 0.8rem;
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    font-size: 2rem;
+  }
 `;
 
 export const Tags = styled.div`
@@ -71,7 +141,6 @@ export const Tags = styled.div`
   gap: 0.9rem;
   font-size: 1.4rem;
   color: ${({ theme }) => theme.colors["gray-300"]};
-  margin-bottom: 4.8rem;
 
   img {
     height: 1.6rem;
@@ -80,7 +149,7 @@ export const Tags = styled.div`
 `;
 
 export const Price = styled.div`
-  margin-bottom: 4.8rem;
+  grid-area: price;
 
   .patner {
     font-size: 4rem;
@@ -95,13 +164,19 @@ export const Price = styled.div`
     color: ${({ theme }) => theme.colors["gray-300"]};
     text-transform: uppercase;
   }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    display: none;
+  }
 `;
 
 export const Comment = styled.div`
+  grid-area: comment;
+
   font-size: 1.4rem;
+
   color: ${({ theme }) => theme.colors["gray-400"]};
   line-height: 2.1rem;
-  margin-bottom: 4.8rem;
 
   .sommelier {
     font-size: 1.6rem;
@@ -109,14 +184,21 @@ export const Comment = styled.div`
     font-weight: 700;
     margin-bottom: 0.8rem;
   }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    padding: 1.5rem;
+  }
 `;
 
 export const Buy = styled.div`
+  grid-area: buy;
+
   display: flex;
   align-items: center;
   width: 32.8rem;
+  height: 5.6rem;
   background-color: ${({ theme }) => theme.colors["green-500"]};
-  padding: 1.8rem 2.2rem;
+  padding: 0rem 2.2rem;
   border-radius: 4px;
   color: ${({ theme }) => theme.colors["white"]};
 
@@ -141,6 +223,10 @@ export const Buy = styled.div`
     background-color: ${({ theme }) => theme.colors["half-white"]};
     margin-left: 2.2rem;
   }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    display: none;
+  }
 `;
 
 export const ActionsQtd = styled.button<ActionsQtdProps>`
@@ -161,5 +247,65 @@ export const ActionsQtd = styled.button<ActionsQtdProps>`
 
   &:disabled {
     cursor: not-allowed;
+  }
+`;
+
+export const PriceMobile = styled.div`
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 8rem;
+  background-color: ${({ theme }) => theme.colors["white"]};
+  box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.1);
+  padding: 0px 16px;
+
+  justify-content: space-between;
+  align-items: center;
+
+  .price-wrapper {
+    margin-left: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .discount {
+      background-color: ${({ theme }) => theme.colors["orange-500"]};
+      font-size: 1rem;
+      color: ${({ theme }) => theme.colors["white"]};
+      font-weight: bold;
+      padding: 0.5rem;
+      width: fit-content;
+      border-radius: 2px;
+      margin-top: -15px;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: ${({ theme }) => theme.colors["gray-500"]};
+      text-decoration: line-through;
+    }
+
+    .discount-price {
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: ${({ theme }) => theme.colors["purple-500"]};
+    }
+
+    .not-patner {
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: ${({ theme }) => theme.colors["gray-500"]};
+    }
+  }
+
+  .button {
+    margin-right: 1.6rem;
+    width: 18rem;
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    display: flex;
   }
 `;
