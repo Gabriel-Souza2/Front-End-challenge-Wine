@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface ActiveLink {
   active: boolean;
@@ -49,8 +49,26 @@ export const Content = styled.div`
   }
 `;
 
+const AnimationMenuMedium = keyframes`
+  0% {
+    margin-left: -40%;
+  }
+  100% {
+    margin-left: 0;
+  }
+`;
+
+const AnimationMenuSmall = keyframes`
+  0% {
+    margin-left: -90%;
+  }
+  100% {
+    margin-left: 0;
+  }
+`;
+
 export const Nav = styled.nav<MobileMenu>`
-  z-index: 99999;
+  z-index: 2;
   margin-left: 8rem;
   font-size: 1.8rem;
   color: ${({ theme }) => theme.colors["gray-400"]};
@@ -64,7 +82,7 @@ export const Nav = styled.nav<MobileMenu>`
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.medium}) {
     & {
-      display: block;
+      display: ${({ openMobileMenu }) => (openMobileMenu ? "block" : "none")};
       position: absolute;
       top: 0;
       left: 0;
@@ -72,8 +90,8 @@ export const Nav = styled.nav<MobileMenu>`
       overflow-y: auto;
       height: 100vh;
       width: 40%;
-      margin-left: ${({ openMobileMenu }) => (openMobileMenu ? "0" : "-40%")};
-      transition: margin-left 0.5s linear;
+      margin-left: 0;
+      animation: ${AnimationMenuMedium} 0.5s linear;
       background-color: ${({ theme }) => theme.colors["gray-100"]};
 
       ul {
@@ -87,7 +105,8 @@ export const Nav = styled.nav<MobileMenu>`
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
     width: 90%;
-    margin-left: ${({ openMobileMenu }) => (openMobileMenu ? "0" : "-90%")};
+    margin-left: 0;
+    animation: ${AnimationMenuSmall} 0.5s linear;
   }
 `;
 
@@ -141,6 +160,7 @@ export const HambugerMenu = styled.button`
 `;
 
 export const Overlay = styled.div<MobileMenu>`
+  z-index: 1;
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);

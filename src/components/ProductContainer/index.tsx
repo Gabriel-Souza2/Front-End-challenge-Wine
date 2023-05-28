@@ -1,7 +1,5 @@
 import { Container } from "./styles";
 import { IProduct } from "@/dao/product";
-import { useCart } from "@/context/CartContext";
-import { useState } from "react";
 import { AddButton } from "../AddButton";
 
 interface Props {
@@ -14,7 +12,7 @@ export function ProductContainer({ data }: Props) {
   return (
     <Container>
       <a href={`/product/${data.id}`} className="product-wrapper">
-        <img src={data.image} alt="vinho" />
+        <img src={data.image} alt="Imagem do vinho" />
         <div className="title">
           <p>{data.name}</p>
         </div>

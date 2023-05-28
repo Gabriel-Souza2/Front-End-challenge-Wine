@@ -21,12 +21,12 @@ import Group from "../../assets/group.svg";
 import Hamburger from "../../assets/ic-line.svg";
 import Arrow from "../../assets/arrow-right-pink.svg";
 import Close from "../../assets/icon_close.svg";
+import Logo from "../../assets/white.svg";
 
 import { useState } from "react";
 import { Cart } from "@/components/Cart";
 import { useCart } from "@/context/CartContext";
 
-import Logo from "../../assets/white.svg";
 interface MenuLink {
   link: string;
   name: string;
