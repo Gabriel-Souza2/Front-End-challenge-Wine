@@ -12,7 +12,6 @@ export function saveStorage(key: string, value: any): void {
 export function getStorage(key: string): any {
   const cookies = nookies.get();
   if (cookies[CART]) {
-    console.log("here");
     return JSON.parse(cookies[key]);
   }
 

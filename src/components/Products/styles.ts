@@ -40,6 +40,12 @@ export const ProductsList = styled.ul`
     }
   }
 
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.small}) {
+    li {
+      width: 17rem;
+    }
+  }
+
   @media screen and (max-width: ${({ theme }) =>
       theme.breakpoints.extraSmall}) {
     li {
