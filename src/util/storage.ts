@@ -1,4 +1,4 @@
-import nookies, { parseCookies } from "nookies";
+import nookies from "nookies";
 import { CART } from "./card";
 
 export function saveStorage(key: string, value: any): void {
