@@ -15,9 +15,14 @@ export function Product({ data }: ProductProps) {
 }
 
 export const getStaticPaths = async () => {
+  const { data } = await axios.get(
+    "https://apiwine.onrender.com/products/total"
+  );
   return {
-    paths: Array.from({ length: 5 }).map((_, i) => `/product/${i + 2}`),
-    fallback: "blocking",
+    paths: Array.from({ length: data.total }).map(
+      (_, i) => `/product/${i + 1}`
+    ),
+    fallback: false,
   };
 };
 
