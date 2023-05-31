@@ -28,7 +28,7 @@ export const Content = styled(Dialog.Content)`
   transform: translateY(-50%);
   width: 35rem;
   height: 100%;
-
+  z-index: 9999;
   overflow-y: auto;
 `;
 
@@ -46,7 +46,7 @@ export const Title = styled(Dialog.Title)`
 
 export const Products = styled.div`
   background-color: ${({ theme }) => theme.colors["gray-100"]};
-  height: 40rem;
+  height: 60%;
   overflow-y: auto;
 
   li {
@@ -56,7 +56,8 @@ export const Products = styled.div`
 `;
 
 export const Footer = styled.div`
-  padding: 2rem;
+  padding: 4rem 2rem 2rem;
+  height: auto;
 
   .total {
     display: flex;

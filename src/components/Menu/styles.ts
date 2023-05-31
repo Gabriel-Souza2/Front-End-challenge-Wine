@@ -191,7 +191,7 @@ export const MenuItem = styled.li<ActiveLink>`
     width: 100%;
     height: 4px;
     background-color: ${({ active, theme }) =>
-      active ? theme.colors["purple-500"] : theme.colors["white"]};
+      active ? theme.colors["purple-500"] : "none"};
 
     position: absolute;
     bottom: 0;
